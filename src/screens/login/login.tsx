@@ -13,7 +13,19 @@ import {
 import { styles } from "./styles";
 
 export const Login = () => {
+  const [name, setName] = useState("")
+  const [password, setPassword] = useState("")
 
+  const submit = () => {
+    api.post("/auth/login", {
+      username: name,
+      password: password
+    }).then((resposta) => {
+      console.log('RESPOSTA DO SERVICOR:',resposta)
+    }).catch(() => {
+      alert("Usuário ou Senha Incorreta!")
+    })
+  }
 
   return (
     <KeyboardAvoidingView
@@ -30,12 +42,12 @@ export const Login = () => {
               Insira seus dados para entrar na sua conta.
             </Text>
             <CardLogin
-              handleSubmit={() => {}}
+              handleSubmit={submit}
               loading={false}
-              name={""}
-              setValueName={() => {}}
-              setValuePassword={() => {}}
-              password={""}
+              name={name}
+              setValueName={setName}
+              setValuePassword={setPassword}
+              password={password}
             />
           </View>
         </View>

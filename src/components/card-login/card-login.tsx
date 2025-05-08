@@ -30,6 +30,7 @@ export const CardLogin = ({
         title="Senha"
         value={password}
         styleContainer={{ marginTop: 24 }}
+        secureTextEntry
       />
       <ButtonDefault title="Entrar" onPress={handleSubmit} loading={loading} />
     </View>
